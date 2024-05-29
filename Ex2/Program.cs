@@ -1,4 +1,4 @@
-﻿using Ex2;
+﻿namespace Ex2;
 
 class Program
 {

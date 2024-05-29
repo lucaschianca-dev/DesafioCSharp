@@ -1,5 +1,6 @@
 ﻿using Ex2;
-using Ex3;
+
+namespace Ex3;
 
 class Program
 {

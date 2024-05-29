@@ -1,5 +1,4 @@
-﻿using Ex1;
-using System.Linq.Expressions;
+﻿namespace Ex1;
 
 class Program()
 {
