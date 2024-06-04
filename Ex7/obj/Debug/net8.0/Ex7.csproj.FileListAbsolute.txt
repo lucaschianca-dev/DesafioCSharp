@@ -1,0 +1,15 @@
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\bin\Debug\net8.0\Ex7.exe
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\bin\Debug\net8.0\Ex7.deps.json
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\bin\Debug\net8.0\Ex7.runtimeconfig.json
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\bin\Debug\net8.0\Ex7.dll
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\bin\Debug\net8.0\Ex7.pdb
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.AssemblyInfoInputs.cache
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.AssemblyInfo.cs
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.sourcelink.json
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.dll
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\refint\Ex7.dll
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.pdb
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\Ex7.genruntimeconfig.cache
+C:\Users\Lucas\Desktop\DesafioBee\DesafioCSharp\Ex7\obj\Debug\net8.0\ref\Ex7.dll
