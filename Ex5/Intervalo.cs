@@ -7,9 +7,9 @@ public class Intervalo
 
     public Intervalo(DateTime dataHoraInicial, DateTime dataHoraFinal)
     {
-        if (dataHoraInicial > dataHoraFinal)
+        if (dataHoraInicial >= dataHoraFinal)
         {
-            throw new ArgumentException("A data/hora inicial não pode ser maior que a data/hora final.");
+            throw new ArgumentException("A data/hora inicial deve ser menor que a data/hora final.");
         }
 
         DataHoraInicial = dataHoraInicial;
@@ -18,27 +18,23 @@ public class Intervalo
 
     public bool TemIntersecao(Intervalo outro)
     {
+        if (outro == null) throw new ArgumentNullException(nameof(outro));
         return DataHoraInicial < outro.DataHoraFinal && DataHoraFinal > outro.DataHoraInicial;
     }
 
     public override bool Equals(object obj)
     {
-        if (obj == null || GetType() != obj.GetType())
+        if (obj is Intervalo outro)
         {
-            return false;
+            return Duracao == outro.Duracao;
         }
-
-        Intervalo outro = (Intervalo)obj;
-        return DataHoraInicial == outro.DataHoraInicial && DataHoraFinal == outro.DataHoraFinal;
+        return false;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(DataHoraInicial, DataHoraFinal);
+        return HashCode.Combine(Duracao);
     }
 
-    public TimeSpan Duracao
-    {
-        get { return DataHoraFinal - DataHoraInicial; }
-    }
+    public TimeSpan Duracao => DataHoraFinal - DataHoraInicial;
 }
