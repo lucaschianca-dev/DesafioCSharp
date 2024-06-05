@@ -6,7 +6,7 @@ class Program
     static void Main(string[] args)
     {
         string nome = LerNome();
-        String cpf = LerCpf();
+        long cpf = LerCpf(out long cpfLong);
         //data
         String rendaMensal = LerRendaMensal(out float rendaMensalFloat);
         String estadoCivil = LerEstadoCivil();
@@ -14,11 +14,11 @@ class Program
 
         Pessoa pessoa = new Pessoa(nome, cpf,/*dataDeNascimento,*/ rendaMensal, estadoCivil, dependentes);
 
-        Console.WriteLine(":---------DADOS---------:");
+        Console.WriteLine(":----------DADOS----------:");
         Console.WriteLine($"  Nome: {pessoa.Nome}");
         Console.WriteLine($"  CPF: {pessoa.Cpf}");
         // Console.WriteLine($"Data de Nascimento: {dataDeNascimento:dd/MM/yyyy}");
-        Console.WriteLine($"  Renda Mensal: {pessoa.RendaMensal}");
+        Console.WriteLine($"  Renda Mensal: R${pessoa.RendaMensal}");
         Console.WriteLine($"  Estado Civil: {pessoa.EstadoCivil}");
         Console.WriteLine($"  Dependentes: {pessoa.Dependentes}");
 
@@ -34,14 +34,14 @@ class Program
                 {
                     break;
                 }
-                Console.WriteLine("ERRO - O campo deve conter mais de 5 caracteres!");
+                Console.WriteLine("ERRO - O campo deve conter ao menos 5 caracteres!");
             }
-            Console.WriteLine($"Nome digitado: {nome}");
+            Console.WriteLine($"Nome digitado: ({nome})");
             Console.WriteLine();
             return nome;
         }
 
-        static string LerCpf()
+        static long LerCpf(out long cpfLong)
         {
             string cpf;
             while (true)
@@ -49,18 +49,18 @@ class Program
                 Console.WriteLine("Digite o CPF: ");
                 cpf = Console.ReadLine();
 
-                if (ValidaDados.ValidaCpf(cpf))
+                if (ValidaDados.ValidaCpf(cpf, out cpfLong))
                 {
                     break;
                 }
                 else
                 {
                     Console.WriteLine("ERRO - CPF inválido!");
-                }                                       
+                }
             }
-            Console.WriteLine($"CPF digitado: {cpf}");
+            Console.WriteLine($"CPF digitado: {cpfLong}");
             Console.WriteLine();
-            return cpf;
+            return cpfLong;
         }
 
         static string LerRendaMensal(out float rendaMensalFloat)

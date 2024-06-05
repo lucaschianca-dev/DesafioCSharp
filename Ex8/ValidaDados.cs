@@ -9,9 +9,17 @@ public class ValidaDados
         return nome.Length >= 5;
     }
 
-    public static bool ValidaCpf(string cpf)
+    public static bool ValidaCpf(string cpf, out long cpfLong)
     {
-        return cpf.Length == 11;
+        if (cpf.Length == 11 && long.TryParse(cpf, out cpfLong))
+        {
+            return true;
+        }
+        else
+        {
+            cpfLong = 0;
+            return false;
+        }
     }
 
     //public static bool ValidaDataNascimento(string dataNascimento, out DateTime _dataDeNascimento)
