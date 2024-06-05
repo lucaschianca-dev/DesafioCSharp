@@ -6,10 +6,10 @@ public class Pessoa
     private long _cpf { get; set; }
     private DateTime _dataDeNascimento { get; set; }
     private string _rendaMensal { get; set; }
-    private string _estadoCivil { get; set; }
-    private string _dependentes { get; set; }
+    private char _estadoCivil { get; set; }
+    private int _dependentes { get; set; }
 
-    public Pessoa(string nome, long cpf, DateTime dataDeNascimento, string rendaMensal, string estadoCivil, string dependentes)
+    public Pessoa(string nome, long cpf, DateTime dataDeNascimento, string rendaMensal, char estadoCivil, int dependentes)
     {
         _nome = nome;
         _cpf = cpf;
@@ -43,13 +43,13 @@ public class Pessoa
         set { _rendaMensal = value; }
     }
 
-    public string EstadoCivil
+    public char EstadoCivil
     {
         get { return _estadoCivil; }
         set { _estadoCivil = value; }
     }
 
-    public string Dependentes
+    public int Dependentes
     {
         get { return _dependentes; }
         set { _dependentes = value; }

@@ -9,8 +9,8 @@ class Program
         long cpf = LerCpf(out long cpfLong);
         DateTime dataDeNascimento = LerDataNascimento();
         String rendaMensal = LerRendaMensal(out float rendaMensalFloat);
-        String estadoCivil = LerEstadoCivil();
-        String dependentes = LerDependentes();
+        char estadoCivil = LerEstadoCivil();
+        int dependentes = LerDependentes(out int dependentesInt);
 
         Pessoa pessoa = new Pessoa(nome, cpf, dataDeNascimento, rendaMensal, estadoCivil, dependentes);
 
@@ -21,11 +21,11 @@ class Program
         Console.WriteLine("|               DADOS               |");
         Console.WriteLine("=====================================");
         Console.WriteLine($"| Nome:           {pessoa.Nome.PadRight(comprimentoMaximo)}|");
-        Console.WriteLine($"| CPF:            {pessoa.Cpf:D11}".PadRight(comprimentoMaximo + 7) + "|");
+        Console.WriteLine($"| CPF:            {pessoa.Cpf:D11}       |");
         Console.WriteLine($"| Nascimento:     {dataDeNascimento:dd/MM/yyyy}".PadRight(comprimentoMaximo) + "|");
         Console.WriteLine($"| Renda Mensal:   R$ {pessoa.RendaMensal}".PadRight(comprimentoMaximo + 7) + "|");
-        Console.WriteLine($"| Estado Civil:   {pessoa.EstadoCivil.PadRight(comprimentoMaximo)}|");
-        Console.WriteLine($"| Dependentes:    {pessoa.Dependentes.PadRight(comprimentoMaximo)}|");
+        Console.WriteLine($"| Estado Civil:   {pessoa.EstadoCivil}                 |");
+        Console.WriteLine($"| Dependentes:    {pessoa.Dependentes}                 |");
         Console.WriteLine("=====================================");
 
         static string LerNome()
@@ -107,15 +107,15 @@ class Program
             return rendaMensalFloat.ToString("F2");
         }
 
-        static string LerEstadoCivil()
+        static char LerEstadoCivil()
         {
-            string estadoCivil;
+            string estadoCivilStr;
             while (true)
             {
                 Console.WriteLine("Digite seu estado civil [C - Casado(a) / S - Solteiro(a) / V - Viúvo(a) / D - Divorciado(a)]: ");
-                estadoCivil = Console.ReadLine();
+                estadoCivilStr = Console.ReadLine();
 
-                if (ValidaDados.ValidaEstadoCivil(estadoCivil))
+                if (!string.IsNullOrEmpty(estadoCivilStr) && ValidaDados.ValidaEstadoCivil(estadoCivilStr[0]))
                 {
                     break;
                 }
@@ -128,48 +128,36 @@ class Program
                     Console.WriteLine();
                 }
             }
-            switch (estadoCivil)
+
+            char estadoCivilChar = char.ToUpper(estadoCivilStr[0]);
+            switch (estadoCivilChar)
             {
-                case "C":
-                case "c":
+                case 'C':
                     Console.WriteLine("Regime selecionado: Casado(a)");
-                    Console.WriteLine();
-                    return estadoCivil.ToUpper();
-
-                case "S":
-                case "s":
+                    break;
+                case 'S':
                     Console.WriteLine("Regime selecionado: Solteiro(a)");
-                    Console.WriteLine();
-                    return estadoCivil.ToUpper();
-
-                case "V":
-                case "v":
-                    Console.WriteLine($"Regime selecionado: Viúvo(a)");
-                    Console.WriteLine();
-                    return estadoCivil.ToUpper();
-
-                case "D":
-                case "d":
+                    break;
+                case 'V':
+                    Console.WriteLine("Regime selecionado: Viúvo(a)");
+                    break;
+                case 'D':
                     Console.WriteLine("Regime selecionado: Divorciado(a)");
-                    Console.WriteLine();
-                    return estadoCivil.ToUpper();
-
-                default:
-                    Console.WriteLine("Estado civil inválido.");
-                    Console.WriteLine();
-                    return estadoCivil.ToUpper();
+                    break;
             }
+            Console.WriteLine();
+            return estadoCivilChar;
         }
 
-        static string LerDependentes()
+        static int LerDependentes(out int dependentesInt)
         {
-            string dependentes;
+            string dependentesStr;
             while (true)
             {
                 Console.WriteLine("Digite quantos dependentes você possui: ");
-                dependentes = Console.ReadLine();
+                dependentesStr = Console.ReadLine();
 
-                if (ValidaDados.ValidaDependentes(dependentes, out int _))
+                if (ValidaDados.ValidaDependentes(dependentesStr, out dependentesInt))
                 {
                     break;
                 }
@@ -182,7 +170,7 @@ class Program
                     Console.WriteLine();
                 }
             }
-            return dependentes;
+            return dependentesInt;
         }
 
         static DateTime LerDataNascimento()

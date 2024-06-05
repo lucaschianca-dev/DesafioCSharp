@@ -58,10 +58,9 @@ public class ValidaDados
             && rendaMensalFloat >= 0;
     }
 
-    public static bool ValidaEstadoCivil(string estadoCivil)
+    public static bool ValidaEstadoCivil(char estadoCivil)
     {
-        estadoCivil = estadoCivil.ToUpper();
-        return estadoCivil.Length == 1 && "CSVD".Contains(estadoCivil);
+        return "CSVDcsdv".Contains(estadoCivil);
     }
 
     public static bool ValidaDependentes(string dependentesStr, out int dependentes)
