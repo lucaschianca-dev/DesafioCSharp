@@ -14,13 +14,18 @@ class Program
 
         Pessoa pessoa = new Pessoa(nome, cpf,/*dataDeNascimento,*/ rendaMensal, estadoCivil, dependentes);
 
-        Console.WriteLine(":----------DADOS----------:");
-        Console.WriteLine($"  Nome: {pessoa.Nome}");
-        Console.WriteLine($"  CPF: {pessoa.Cpf}");
-        // Console.WriteLine($"Data de Nascimento: {dataDeNascimento:dd/MM/yyyy}");
-        Console.WriteLine($"  Renda Mensal: R${pessoa.RendaMensal}");
-        Console.WriteLine($"  Estado Civil: {pessoa.EstadoCivil}");
-        Console.WriteLine($"  Dependentes: {pessoa.Dependentes}");
+        int comprimentoMaximo = 18;
+
+        Console.WriteLine("=====================================");
+        Console.WriteLine("|               DADOS               |");
+        Console.WriteLine("=====================================");
+        Console.WriteLine($"| Nome:           {pessoa.Nome.PadRight(comprimentoMaximo)}|");
+        Console.WriteLine($"| CPF:            {pessoa.Cpf:D11}".PadRight(comprimentoMaximo + 7) + "|");
+        // Console.WriteLine($"| Data de Nascimento: {dataDeNascimento:dd/MM/yyyy}".PadRight(comprimentoMaximo) + "|");
+        Console.WriteLine($"| Renda Mensal:   R$ {pessoa.RendaMensal}".PadRight(comprimentoMaximo + 7) + "|");
+        Console.WriteLine($"| Estado Civil:   {pessoa.EstadoCivil.PadRight(comprimentoMaximo)}|");
+        Console.WriteLine($"| Dependentes:    {pessoa.Dependentes.PadRight(comprimentoMaximo)}|");
+        Console.WriteLine("=====================================");
 
         static string LerNome()
         {
@@ -34,7 +39,11 @@ class Program
                 {
                     break;
                 }
-                Console.WriteLine("ERRO - O campo deve conter ao menos 5 caracteres!");
+                Console.WriteLine();
+                Console.WriteLine("+----------------------------------------------------+");
+                Console.WriteLine("  ERRO - O campo deve conter ao menos 5 caracteres!");
+                Console.WriteLine("+----------------------------------------------------+");
+                Console.WriteLine();
             }
             Console.WriteLine($"Nome digitado: ({nome})");
             Console.WriteLine();
@@ -55,10 +64,14 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("ERRO - CPF inválido!");
+                    Console.WriteLine();
+                    Console.WriteLine("+-----------------------+");
+                    Console.WriteLine("  ERRO - CPF inválido!");
+                    Console.WriteLine("+-----------------------+");
+                    Console.WriteLine();
                 }
             }
-            Console.WriteLine($"CPF digitado: {cpfLong}");
+            Console.WriteLine($"CPF digitado: ({cpfLong})");
             Console.WriteLine();
             return cpfLong;
         }
@@ -71,7 +84,7 @@ class Program
                                  //feito os cálculos e retornado como String para ser armazenado na entidade Pessoa.
             while (true)
             {
-                Console.Write("Digite a sua renda mensal: ");
+                Console.Write("Digite a sua renda mensal: R$ ");
                 rendaMensalStr = Console.ReadLine();
 
                 if (ValidaDados.ValidaRendaMensal(rendaMensalStr, out rendaMensalFloat))
@@ -80,11 +93,15 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("ERRO - Sua renda deve ser maior que 0!");
+                    Console.WriteLine();
+                    Console.WriteLine("+-----------------------------------------------+");
+                    Console.WriteLine("  ERRO - Sua renda deve ser maior que R$ 0,00!");
+                    Console.WriteLine("+-----------------------------------------------+");
+                    Console.WriteLine();
                 }
             }
-            Console.WriteLine($"Valor digitado: {rendaMensalStr}");
-            Console.WriteLine($"Calculando Benefícios: {rendaMensalFloat += beneficio}");
+            Console.WriteLine($"Valor digitado: R$ {rendaMensalStr}");
+            Console.WriteLine($"Calculando Benefícios: R$ {rendaMensalFloat += beneficio}");
             Console.WriteLine();
             return rendaMensalFloat.ToString("F2");
         }
@@ -103,7 +120,11 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("ERRO");
+                    Console.WriteLine();
+                    Console.WriteLine("+------------------------------------+");
+                    Console.WriteLine("  ERRO - Digite apenas C, S, V ou D!");
+                    Console.WriteLine("+------------------------------------+");
+                    Console.WriteLine();
                 }
             }
             switch (estadoCivil)
@@ -153,7 +174,11 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("ERRO");
+                    Console.WriteLine();
+                    Console.WriteLine("+--------------------------------+");
+                    Console.WriteLine("  ERRO - Deve ser entre 0 à 10!");
+                    Console.WriteLine("+--------------------------------+");
+                    Console.WriteLine();
                 }
             }
             return dependentes;
