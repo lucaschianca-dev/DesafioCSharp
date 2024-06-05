@@ -83,7 +83,6 @@ class Program
                     Console.WriteLine("ERRO - Sua renda deve ser maior que 0!");
                 }
             }
-            Console.WriteLine();
             Console.WriteLine($"Valor digitado: {rendaMensalStr}");
             Console.WriteLine($"Calculando Benefícios: {rendaMensalFloat += beneficio}");
             Console.WriteLine();
@@ -111,25 +110,25 @@ class Program
             {
                 case "C":
                 case "c":
-                    Console.WriteLine("Regime digitado: Casado(a)");
+                    Console.WriteLine("Regime selecionado: Casado(a)");
                     Console.WriteLine();
                     return estadoCivil.ToUpper();
 
                 case "S":
                 case "s":
-                    Console.WriteLine("Regime digitado: Solteiro(a)");
+                    Console.WriteLine("Regime selecionado: Solteiro(a)");
                     Console.WriteLine();
                     return estadoCivil.ToUpper();
 
                 case "V":
                 case "v":
-                    Console.WriteLine($"Regime digitado: Viúvo(a)");
+                    Console.WriteLine($"Regime selecionado: Viúvo(a)");
                     Console.WriteLine();
                     return estadoCivil.ToUpper();
 
                 case "D":
                 case "d":
-                    Console.WriteLine("Regime digitado: Divorciado(a)");
+                    Console.WriteLine("Regime selecionado: Divorciado(a)");
                     Console.WriteLine();
                     return estadoCivil.ToUpper();
 
