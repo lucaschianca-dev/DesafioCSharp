@@ -22,10 +22,29 @@ public class ValidaDados
         }
     }
 
-    //public static bool ValidaDataNascimento(string dataNascimento, out DateTime _dataDeNascimento)
-    //{
+    public static bool ValidaDataNascimento(string dataNascimentoStr, out DateTime dataNascimento)
+    {
+        bool formatoValido = DateTime.
+            TryParseExact
+            (dataNascimentoStr,
+            "dd/MM/yyyy",
+            CultureInfo.InvariantCulture,
+            DateTimeStyles.None,
+            out dataNascimento);
 
-    //}
+        if (formatoValido)
+        {
+            int idade = CalculaIdade(dataNascimento);
+            return idade > 18;
+        }
+        return false;
+    }
+
+    public static int CalculaIdade(DateTime dataNascimento)
+    {
+        int idade = DateTime.Now.Year - dataNascimento.Year;
+        return idade;
+    }
 
     public static bool ValidaRendaMensal(string rendaMensalStr, out float rendaMensalFloat)
     {

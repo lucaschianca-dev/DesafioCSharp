@@ -7,21 +7,22 @@ class Program
     {
         string nome = LerNome();
         long cpf = LerCpf(out long cpfLong);
-        //data
+        DateTime dataDeNascimento = LerDataNascimento();
         String rendaMensal = LerRendaMensal(out float rendaMensalFloat);
         String estadoCivil = LerEstadoCivil();
         String dependentes = LerDependentes();
 
-        Pessoa pessoa = new Pessoa(nome, cpf,/*dataDeNascimento,*/ rendaMensal, estadoCivil, dependentes);
+        Pessoa pessoa = new Pessoa(nome, cpf, dataDeNascimento, rendaMensal, estadoCivil, dependentes);
 
         int comprimentoMaximo = 18;
 
+        Console.WriteLine();
         Console.WriteLine("=====================================");
         Console.WriteLine("|               DADOS               |");
         Console.WriteLine("=====================================");
         Console.WriteLine($"| Nome:           {pessoa.Nome.PadRight(comprimentoMaximo)}|");
         Console.WriteLine($"| CPF:            {pessoa.Cpf:D11}".PadRight(comprimentoMaximo + 7) + "|");
-        // Console.WriteLine($"| Data de Nascimento: {dataDeNascimento:dd/MM/yyyy}".PadRight(comprimentoMaximo) + "|");
+        Console.WriteLine($"| Nascimento:     {dataDeNascimento:dd/MM/yyyy}".PadRight(comprimentoMaximo) + "|");
         Console.WriteLine($"| Renda Mensal:   R$ {pessoa.RendaMensal}".PadRight(comprimentoMaximo + 7) + "|");
         Console.WriteLine($"| Estado Civil:   {pessoa.EstadoCivil.PadRight(comprimentoMaximo)}|");
         Console.WriteLine($"| Dependentes:    {pessoa.Dependentes.PadRight(comprimentoMaximo)}|");
@@ -182,6 +183,33 @@ class Program
                 }
             }
             return dependentes;
+        }
+
+        static DateTime LerDataNascimento()
+        {
+            DateTime dataNascimento;
+
+            while (true)
+            {
+                Console.Write("Digite sua data de nascimento (DD/MM/AAAA): ");
+                String dataNascimentoStr = Console.ReadLine();
+
+                if (ValidaDados.ValidaDataNascimento(dataNascimentoStr, out dataNascimento))
+                {
+                    int idade = ValidaDados.CalculaIdade(dataNascimento);
+
+                    Console.WriteLine($"Data de nascimento digitada: {dataNascimento}");
+                    Console.WriteLine($"Idade selecionada: {idade}");
+                    Console.WriteLine("");
+                    break ;
+                }
+                Console.WriteLine();
+                Console.WriteLine("+-------------------------------------------------------------------------------+");
+                Console.WriteLine("  ERRO - Data de nascimento inválida ou o cliente deve ter pelo menos 18 anos.");
+                Console.WriteLine("+-------------------------------------------------------------------------------+");
+                Console.WriteLine();
+            }
+            return dataNascimento;
         }
     }
 }
